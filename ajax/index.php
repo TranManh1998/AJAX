@@ -222,41 +222,34 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
-        $("#load-more").on('click', function (event) {
+        $("#load-more").on("click", function (event) {
             event.preventDefault();
-
-            var params={};
-            params.current=9;
-            params.type="product";
-
+            var params = {};
+            params.current = 9;
+            params.type = "product";
             $.ajax({
-
-                url:"http://localhost:8080/appAjax/ajax/ajax.php",
+                url:"http://localhost/AJAX/ajax/ajax.php",
                 data: params,
-                type:"POST",
-                dataType: 'JSON',
-                beforeSend: function(){
-                    alert("Truoc khi gui request bang ajax");
+                type: "POST",
+                dataType:"json",
+                beforeSend : function () {
+                    alert("Trước khi gửi request bằng ajax");
                 },
-                success: function (data) {
-                    alert("ajax tra ve thanh cong");
+                success : function (data) {
+                    alert("ajax trả về thành công");
                     console.log(data);
                     $(".album-list").append(data.html);
-
                 },
-                error: function (xhr) {
+                error : function (xhr) {
                     alert("Lỗi ajax");
-                    
                 },
                 complete: function (xhr,status) {
-                    alert("ajax hoan tat");
+                    alert("ajax hoàn thành");
                 }
+            })
+        })
 
-            });
-
-        });
-        
-    });
+    })
 </script>
 </body>
 </html>
